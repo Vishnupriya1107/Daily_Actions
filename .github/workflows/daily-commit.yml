@@ -1,36 +1,14 @@
 name: Daily Repository Update
 
 on:
-  schedule:
-    # Run at 05:20 UTC (10:50 AM IST)
-    - cron: '20 5 * * *'
-  # Allow manual triggering for testing
   workflow_dispatch:
-
-permissions:
-  contents: write
+  push:
+    branches:
+      - main
 
 jobs:
-  update-repo:
+  test-workflow:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Configure Git
-        run: |
-          git config --global user.name 'GitHub Actions Bot'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Daily update by vishnupriya.mohan@straive.com
-        run: |
-          # Create or update the daily status file
-          echo "Repository updated on $(date)" > status.txt
-          
-          # Add and commit changes
-          git add status.txt
-          git commit -m "Daily automated update $(date)"
-          git push origin HEAD:main 
+      - name: Simple test step
+        run: echo "Hello World" 
