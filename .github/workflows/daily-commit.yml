@@ -2,8 +2,8 @@ name: Daily Repository Update
 
 on:
   schedule:
-    # Run at 10:48 UTC (specific time as required)
-    - cron: '48 10 * * *'
+    # Run at 05:20 UTC (10:50 AM IST)
+    - cron: '20 5 * * *'
   # Allow manual triggering for testing
   workflow_dispatch:
 
